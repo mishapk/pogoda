@@ -6,7 +6,7 @@ import os
 import sys
 import lxml.html
 
-IP="192.168.0.251"
+IP="192.168.1.101"
 path="/root/spark/directfb-ui"
 filename="startpage.html"
 #rtext="http://sinoptik.ua/погода-кривой-рог/10-дней"
@@ -52,8 +52,8 @@ if type(ftext)==unicode:
 print "data: ",type(data)
 print "ftext: ",type(ftext), ftext
 print "rtext: ",type(rtext), rtext
-#ntext = re.sub(ftext,rtext,data)
-ntext = data.replace(ftext,ftext)
+ntext = re.sub(ftext,rtext,data)
+#ntext = data.replace(ftext,ftext)
 print "ntext: ",type(ntext)
 file_w = open(filename, 'w')
 file_w.write( ntext  )
