@@ -9,8 +9,8 @@ import lxml.html
 IP="192.168.1.101"
 path="/root/spark/directfb-ui"
 filename="startpage.html"
-#rtext="http://sinoptik.ua/погода-кривой-рог/10-дней"
-rtext="http://yandex.ru"
+rtext="http://sinoptik.ua/погода-кривой-рог/10-дней"
+#rtext="http://yandex.ru"
 
 #download file
 ftp=ftplib.FTP(IP)
@@ -52,11 +52,13 @@ if type(ftext)==unicode:
 print "data: ",type(data)
 print "ftext: ",type(ftext), ftext
 print "rtext: ",type(rtext), rtext
-ntext = re.sub(ftext,rtext,data)
-#ntext = data.replace(ftext,ftext)
+if type(ftext)==unicode:
+	ntext = data.replace(ftext,ftext)
+else:
+	ntext = re.sub(ftext,rtext,data)
 print "ntext: ",type(ntext)
 file_w = open(filename, 'w')
-file_w.write( ntext  )
+file_w.write( ntext )
 file_w.close()
 
 #upload file back
